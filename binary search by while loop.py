@@ -1,39 +1,33 @@
+from turtle import left
 from xmlrpc.client import Boolean
 
-i = 0
-numbers = [9,12,6,4,38,46,36,16]
-have = Boolean
-sorted_numbers = sorted(numbers)
-find = 38
-print(f'Sorted numbers are : {sorted_numbers}')
 
-middle_length = int(len(sorted_numbers)/2)
-middle_number = sorted_numbers[int(len(sorted_numbers)/2)]
-
-print(f'Middle Number : {middle_number}')
-
-while True:
-    i = i + 1
-    
-    if find == middle_number:
-        have = True
-        break
-
-    if find > middle_number:
-        for index in range(middle_length+1, len(sorted_numbers), 1):
-            if find == sorted_numbers[index]:
-                have = True
-                print(f'Your number is {find} and index is {index}')
-            i = i + 1
-            if have == True:
-                break
-    
-    if find < middle_number:
-        for index in range(middle_length-1, 0, -1):
-            if find == sorted_numbers[index]:
-                have = True
-                print(f'Your number is {find} and index is {index}')
-            i = i + 1
-        
-    
-print(f'Total Iteration : {i}')
+def binary_search(list, target):
+    count = 0
+    left = 0
+    right = len(list)-1
+    print(f"count {count}")
+    while left <= right:
+        count = count + 1
+        print(f'Count {count}')
+        middle = (left + right) // 2
+        print(f"left is {left}, right is {right} middle pont is {middle}")
+        if target == list[middle]:
+            print(f"{list[middle]} is exist in index number {middle} and loop count {count}")
+            break
+        elif target > list[middle]:
+            left = middle + 1
+            
+        elif target < list[middle]:
+            right = middle - 1
+            
+        else:
+            print('That number not found in your list')
+            
+            
+            
+numbers = [9,12,6,4,38,46,36,16,45,12,17,2,4,25,12,14,22,20]
+numbers = sorted(numbers)
+print(f'Sorted numbers are : {numbers}')
+find = 16
+binary_search(numbers, find)
