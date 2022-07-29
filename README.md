@@ -1,1 +1,1 @@
-# binary-search-by-while-loop
+# binary search using while loop
